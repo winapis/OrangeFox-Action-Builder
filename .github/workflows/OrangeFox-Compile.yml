@@ -91,14 +91,6 @@ jobs:
         repo sync
         mv ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}/bootable/recovery-ofrp ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}/bootable/recovery
 
-    - name: Patching the Source Code
-      if: inputs.MANIFEST_BRANCH == '12.1'
-      run: |
-        cd ${GITHUB_WORKSPACE}
-        git clone https://github.com/ymdzq/scripts of_patch
-        cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}/bootable/recovery
-        git fetch https://github.com/ymdzq/OrangeFox_Recovery fox_12.1 && git cherry-pick 9fa1676..0657691
-
     - name: Clone Device Tree
       run: |
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
